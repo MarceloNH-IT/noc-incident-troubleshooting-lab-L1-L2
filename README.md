@@ -53,3 +53,96 @@ Se selecciona un equipo testigo para verificar la correcta integración con la L
   ipconfig /all
   ping 10.10.10.1
   arp -a
+
+Análisis de Resultados: El host obtiene una dirección IP válida por DHCP corporativo. El ping al Default Gateway (10.10.10.1) responde con un tiempo óptimo de 1ms y la tabla ARP resuelve correctamente la dirección MAC del router/switch core. La capa física y de enlace local operan sin anomalías.
+
+Work note en ServiceNow:
+
+"09:10 AM - [NOC L1] Parámetros IP correctos obtenidos vía DHCP. Comunicación con Gateway local exitosa (Latency: 1ms). Se descarta problema de tarjeta de red o cableado del usuario. La falla es externa al segmento local."
+
+⏱️ 09:15 AM | Fase 3: Aislamiento del Dominio de Falla y Escalamiento (Rol: NOC L1 ➡️ L2)
+Para determinar el alcance de la interrupción, se ejecutan pruebas hacia la red WAN e Internet.
+
+Comandos Ejecutados:
+DOS
+```texto
+ping 8.8.8.8
+nslookup corporativo.local
+tracert 8.8.8.8
+```
+Análisis de Resultados: El comando nslookup falla por tiempo de espera agotado. El tracert muestra que los paquetes llegan al primer salto (Gateway 10.10.10.1), pero mueren en el segundo salto correspondiente al enlace troncal hacia el Switch Core (10.0.0.1).
+
+Procedimiento de Escalamiento: Al superar el alcance operativo del L1, se reasigna formalmente el ticket al grupo resolutor NOC_Routing_Switching_L2 y se notifica al Shift Lead vía canal de guardia por impacto en SLA.
+
+Work note en ServiceNow:
+
+"09:20 AM - [NOC L1] Tráfico bloqueado en el salto 10.0.0.1 (SW-CORE). Se adjuntan trazas de diagnóstico. Escalamiento formal ejecutado hacia NOC L2. Shift Lead alertado."
+
+⏱️ 09:25 AM | Fase 4: Diagnóstico de Infraestructura Activa (Rol: NOC L2)
+El ingeniero L2 toma posesión del incidente y accede mediante acceso seguro (SSH) al nodo central de conmutación.
+
+Comandos CLI Ejecutados (Cisco IOS):
+
+```texto
+Cisco CLI
+show ip interface brief
+show ip route
+show logging | include LINK
+```
+
+Análisis de CLI y Logs: El comando show ip interface brief revela que la interfaz troncal GigabitEthernet0/1 (hacia el enrutador de borde del ISP) se encuentra en estado administratively down / err-disable. El archivo de registro (show logging) evidencia un evento de ráfaga de errores de CRC y microcortes a las 08:50 AM, lo que activó el mecanismo de seguridad de protección de puerto (err-disable).
+
+Work note en ServiceNow:
+
+"09:35 AM - [NOC L2] Acceso SSH a SW-CORE-01 exitoso. Se identifica la interfaz Gi0/1 en estado err-disable por saturación de errores físicos en el enlace de subida del ISP."
+
+⏱️ 09:45 AM | Fase 5: Mitigación, Resolución y RCA (Rol: NOC L2)
+Se procede con la recuperación del servicio aplicando el procedimiento de reactivación de interfaz y validación de protocolos de enrutamiento.
+
+Acciones de Mitigación (CLI):
+Cisco CLI
+```texto
+conf t
+interface GigabitEthernet0/1
+shutdown
+no shutdown
+end
+```
+Validación de Convergencia: Se verifica que la adyacencia del protocolo de enrutamiento dinámico (OSPF) levante y que las rutas vuelvan a poblar la tabla con show ip route. Se comprueba la navegación de los usuarios de prueba.
+
+Cierre del Ticket en ServiceNow:
+
+Código de Cierre: Resolved - Network Configuration / Port Reset
+
+Análisis de Causa Raíz (RCA):
+
+"El puerto GigabitEthernet0/1 del Switch Core entró en estado err-disable debido a una alta tasa de errores de trama generados por fluctuaciones eléctricas temporales en el conversor de medios del proveedor de internet (ISP). La intervención manual de L2 mediante ciclo de apagado administrativo (shutdown/no shutdown) restableció la capa física y la convergencia OSPF."
+
+Acción Preventiva: Se solicitó al área de operaciones de campo coordinar una revisión de parámetros físicos con el proveedor de enlace dedicado.
+
+Work note final en ServiceNow:
+
+"10:00 AM - [NOC L2] Servicio totalmente restablecido. Pruebas de conectividad punta a punta exitosas. Se notifica al usuario principal y se cierra el incidente dentro del SLA establecido."
+
+📊 5. Métricas de Operación y KPIs del Incidente
+MTTA (Mean Time to Acknowledge): 3 minutos.
+
+MTTT (Mean Time to Triage / Escalate): 18 minutos.
+
+MTTR (Mean Time to Repair): 52 minutos (Dentro del SLA de 4 horas para incidentes P2).
+
+📂 Archivos Incluidos en el Repositorio
+topologia_noc_lab.pkt: Topología de red diseñada y probada en Cisco Packet Tracer.
+
+README.md: Documentación formal del proceso operativo y de gestión de incidentes.
+
+👤 Autor
+Horacio Marcelo Nuñez
+
+LinkedIn
+
+GitHub Portfolio
+
+
+
+
