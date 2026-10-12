@@ -6,13 +6,13 @@
 
 ---
 
-## 1. Descripción General del Proyecto
+## 📄1. Descripción General del Proyecto
 
 Este repositorio documenta un **Procedimiento Operativo Estándar (SOP)** y la resolución técnica simulada de un incidente crítico de red (pérdida total de conectividad en una sucursal corporativa). El ejercicio simula con rigor el flujo operativo diario en un centro de operaciones de redes (**NOC - Network Operations Center**), integrando la gestión de servicios de TI bajo marcos **ITIL**, el diagnóstico escalonado de infraestructura (L1 a L2) y la ejecución de comandos de diagnóstico avanzado en equipos Cisco.
 
 ---
 
-## 2. Topología y Componentes de Red
+## 🏗️2. Topología y Componentes de Red
 
 El laboratorio simula una red corporativa segmentada estructurada de la siguiente manera:
 
@@ -23,7 +23,7 @@ El laboratorio simula una red corporativa segmentada estructurada de la siguient
 
 ---
 
-## 3. Gestión ITSM y Modelo de Ticketing (ServiceNow)
+## 📋3. Gestión ITSM y Modelo de Ticketing (ServiceNow)
 
 Todo el ciclo de vida del evento se administra bajo estrictos estándares de la plataforma **ServiceNow (SNOW)**:
 
@@ -39,7 +39,7 @@ Todo el ciclo de vida del evento se administra bajo estrictos estándares de la 
 
 ---
 
-## 4. Bitácora de Resolución de Incidente: INC-0085421
+## 🚨4. Bitácora de Resolución de Incidente: INC-0085421
 
 ### ⏱️ 09:00 AM | Fase 1: Recepción, Triage y Capa 1 (Rol: NOC L1)
 
@@ -118,7 +118,7 @@ end
 
 ---
 
-## 5. Métricas de Operación y KPIs del Incidente
+## 📊5. Métricas de Operación y KPIs del Incidente
 
 * **MTTA (Mean Time to Acknowledge):** 3 minutos.
 * **MTTT (Mean Time to Triage / Escalate):** 18 minutos.
@@ -126,7 +126,7 @@ end
 
 ---
 
-## 6. Archivos Incluidos en el Repositorio
+## 📂6. Archivos Incluidos en el Repositorio
 
 * `topologia_noc_lab.pkt`: Topología de red diseñada y probada en Cisco Packet Tracer.
 * `README.md`: Documentación formal del proceso operativo y de gestión de incidentes.
@@ -136,7 +136,7 @@ end
 ## 👤 Autor
 
 **Horacio Marcelo Nuñez**
-* [LinkedIn]([https://www.linkedin.com/in/[tu-usuario](https://www.linkedin.com/in/marcelo-nunez-it/?isSelfProfile=true)])
+* [LinkedIn]([https://www.linkedin.com/in/[tu-usuario](https://www.linkedin.com/in/marcelo-nunez-it/?isSelfProfile=true])
 * [GitHub Portfolio](https://[github.com/[tu-usuario](https://github.com/MarceloNH-IT)])
 
 
