@@ -148,6 +148,35 @@ end
 * **Capa 3 y Servicios:** Servidor DHCP corporativo configurado en el pool `10.10.10.x` validado con asignación estática de puerta de enlace y DNS.
 * **Estado del Escenario:** El escenario se encuentra en su estado simulado de incidente (enlace de borde en `shutdown` en el puerto `Gi0/1` del Core) para su posterior análisis, diagnóstico y resolución técnica en nivel NOC L1/L2.
 
+# 🌐 Laboratorio Práctico NOC L1 / L2: Diagnóstico y Solución de Red
+
+## 🎯 ¿De qué trata este proyecto?
+Este escenario simula una **red corporativa real** para practicar y demostrar cómo trabaja un analista de un **Centro de Operaciones de Red (NOC)** cuando se enfrenta a problemas cotidianos de conectividad en las **Capas 1 y 2**.
+
+---
+
+## 🔍 ¿Cómo está armado? (La Topología)
+El laboratorio en **[`topologia_noc_lab.pkt`](./topologia_noc_lab.pkt)** cuenta con:
+* **Sector A (Usuarios):** Dos PCs de usuarios conectadas a switches de acceso (`SW-ACC-01` y `SW-ACC-02`).
+* **Core (Corazón de la red):** Un switch central multicapa (`SW-CORE-01`) que administra las VLANs y el tráfico.
+* **Servidores:** Un servidor encargado de entregar las direcciones IP automáticamente (**DHCP**) y otro de nombres (**DNS**).
+* **Borde:** Un router de salida (`RTR-EDGE-01`) conectado a la nube del proveedor de internet.
+
+---
+
+## 🛠️ ¿Qué problemas resolvimos (Nivel L1 y L2)?
+1. **Problema de Capa 1 y Enlaces (L1):** Corregimos las conexiones físicas y los estados de los puertos para que dejen de estar caídos o bloqueados.
+2. **Problema de Capa 2 (L2):** 
+   * Configuramos correctamente los **puertos troncales (`Trunk`)** entre los switches para que las VLANs fluyan sin errores de Spanning Tree.
+   * Configuramos los **puertos de acceso** en la **VLAN 10** para los equipos del Sector A.
+3. **Servicios de Red (DHCP):** Logramos que las computadoras dejen de usar direcciones automáticas de error (APIPA / `169.254.x.x`) y reciban con éxito su IP corporativa (`10.10.10.x`) desde el servidor.
+
+---
+
+## 🛑 Estado Actual del Escenario
+Para que cualquiera pueda probarlo y auditarlo, el laboratorio se entrega con una **falla controlada**: el puerto de salida hacia el router de borde está apagado (`shutdown`). 
+* *Ideal para abrirlo en Packet Tracer, levantar el puerto y verificar cómo opera todo el flujo de red.*
+
 ---
 
 ## 👤 Autor
