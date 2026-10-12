@@ -124,8 +124,9 @@ end
 * **MTTT (Mean Time to Triage / Escalate):** 18 minutos.
 * **MTTR (Mean Time to Repair):** 52 minutos (Dentro del SLA de 4 horas para incidentes P2).
 
+![Topologia](Topologia.jpg)
 ![Bitácora del Incidente](Bitacora.jpg)
-![Bitácora del Incidente](bitacora.jpg)
+
 
 ---
 
