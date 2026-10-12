@@ -84,7 +84,6 @@ El ingeniero L2 toma posesión del incidente y accede mediante acceso seguro (SS
 Comandos CLI Ejecutados (Cisco IOS):
 
 ```texto
-Cisco CLI
 show ip interface brief
 show ip route
 show logging | include LINK
