@@ -151,7 +151,7 @@ end
 🤝 Conclusión y Contacto 🤝
 
 <p align="center">
-  <img src="MarceloNoc.jpg" width="600" alt="Avatar de Marcelo Hernández" style="border-radius: 600%;">
+  <img src="MarceloNoc.jpg" width="300" alt="Avatar de Marcelo Hernández" style="border-radius: 300%;">
 </p>
 🤝 Conclusión y Contacto 🤝
 
