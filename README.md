@@ -139,17 +139,8 @@ end
 
 ---
 
-# 📂 Estructura del Laboratorio de Redes
-
-* **[`topologia_noc_lab.pkt`](./topologia_noc_lab.pkt)** — Archivo principal de Cisco Packet Tracer que contiene la topología corporativa completa del **Sector A (VLAN 10 - Data)**, switches de acceso (`SW-ACC-01`, `SW-ACC-02`), switch multicapa (`SW-CORE-01`), servidores de infraestructura (`SRV-CORP-01` DHCP y `SRV-DNS-01`) y el enrutador de borde (`RTR-EDGE-01`). Cualquier usuario puede hacer clic en el enlace para descargar el archivo y probarlo directamente.
-
+# 📂 Laboratorio Práctico NOC L1 / L2: Diagnóstico y Solución de Red
 # 📋 Detalles Técnicos y Validación del Incidente (`INC-0085421`)
-* **Capa 2 y VLANs:** Configuración de puertos de acceso y enlaces troncales 802.1q (`dot1q`) optimizados para evitar bloqueos de Spanning Tree y discrepancias de VLAN nativa.
-* **Capa 3 y Servicios:** Servidor DHCP corporativo configurado en el pool `10.10.10.x` validado con asignación estática de puerta de enlace y DNS.
-* **Estado del Escenario:** El escenario se encuentra en su estado simulado de incidente (enlace de borde en `shutdown` en el puerto `Gi0/1` del Core) para su posterior análisis, diagnóstico y resolución técnica en nivel NOC L1/L2.
-
-# 🌐 Laboratorio Práctico NOC L1 / L2: Diagnóstico y Solución de Red
-
 ## 🎯 ¿De qué trata este proyecto?
 Este escenario simula una **red corporativa real** para practicar y demostrar cómo trabaja un analista de un **Centro de Operaciones de Red (NOC)** cuando se enfrenta a problemas cotidianos de conectividad en las **Capas 1 y 2**.
 
