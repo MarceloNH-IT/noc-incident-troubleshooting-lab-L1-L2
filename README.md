@@ -126,7 +126,7 @@ end
   * **Acción Preventiva:** Se solicitó al área de operaciones de campo coordinar una revisión de parámetros físicos con el proveedor de enlace dedicado.
 * **Work note final en ServiceNow:** "10:00 AM - [NOC L2] Servicio totalmente restablecido. Pruebas de conectividad punta a punta exitosas. Se notifica al usuario principal y se cierra el incidente dentro del SLA establecido."
 * 
-![Fase](Fase6.jpg)
+
 ---
 
 ## 📊5. Métricas de Operación y KPIs del Incidente
