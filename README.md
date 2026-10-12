@@ -136,8 +136,8 @@ end
 ## 👤 Autor
 
 **Horacio Marcelo Nuñez**
-* [LinkedIn]([https://www.linkedin.com/in/[tu-usuario](https://www.linkedin.com/in/marcelo-nunez-it/?isSelfProfile=true])
-* [GitHub Portfolio](https://[github.com/[tu-usuario](https://github.com/MarceloNH-IT)])
+* [LinkedIn](https://www.linkedin.com/in/marcelo-nunez-it)
+* [GitHub Portfolio](https://github.com/MarceloNH-IT)
 
 
 
