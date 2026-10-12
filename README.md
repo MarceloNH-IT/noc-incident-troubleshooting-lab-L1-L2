@@ -63,8 +63,8 @@ Work note en ServiceNow:
 ⏱️ 09:15 AM | Fase 3: Aislamiento del Dominio de Falla y Escalamiento (Rol: NOC L1 ➡️ L2)
 Para determinar el alcance de la interrupción, se ejecutan pruebas hacia la red WAN e Internet.
 
-Comandos Ejecutados:
-DOS
+* Comandos Ejecutados:
+
 ```texto
 ping 8.8.8.8
 nslookup corporativo.local
@@ -102,7 +102,7 @@ Se procede con la recuperación del servicio aplicando el procedimiento de react
 Acciones de Mitigación (CLI):
 Cisco CLI
 ```texto
-conf t
+configure terminal
 interface GigabitEthernet0/1
 shutdown
 no shutdown
@@ -135,13 +135,6 @@ MTTR (Mean Time to Repair): 52 minutos (Dentro del SLA de 4 horas para incidente
 topologia_noc_lab.pkt: Topología de red diseñada y probada en Cisco Packet Tracer.
 
 README.md: Documentación formal del proceso operativo y de gestión de incidentes.
-
-👤 Autor
-Horacio Marcelo Nuñez
-
-LinkedIn
-
-GitHub Portfolio
 
 
 
