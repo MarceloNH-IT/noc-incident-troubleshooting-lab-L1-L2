@@ -5,6 +5,9 @@
 [![Status: Lab Completed](https://img.shields.io/badge/Status-Completed-success.svg)]()
 
 ---
+![Topologia](Topologia.jpg)
+
+
 
 ## 📄1. Descripción General del Proyecto
 
@@ -14,7 +17,8 @@ Este repositorio documenta un **Procedimiento Operativo Estándar (SOP)** y la r
 
 ## 🏗️2. Topología y Componentes de Red
 
-El laboratorio simula una red corporativa segmentada estructurada de la siguiente manera:
+
+## El laboratorio simula una red corporativa segmentada estructurada de la siguiente manera:
 
 * **Capa de Acceso:** Switches Cisco Catalyst (ej. SW-ACC-01) conectados a los puestos de trabajo del Sector A (VLAN 10 - Data).
 * **Capa de Distribución / Core:** Switch Cisco Core (SW-CORE-01) encargado del enrutamiento inter-VLAN y la puerta de enlace predeterminada.
@@ -42,6 +46,7 @@ Todo el ciclo de vida del evento se administra bajo estrictos estándares de la 
 ## 🚨4. Bitácora de Resolución de Incidente: INC-0085421
 
 ### ⏱️ 09:00 AM | Fase 1: Recepción, Triage y Capa 1 (Rol: NOC L1)
+![Fase](Fase1.jpg)
 
 El sistema de monitoreo dispara una alarma de caída de enlace en el Sector A. Varios usuarios reportan imposibilidad de trabajar.
 
@@ -50,6 +55,7 @@ El sistema de monitoreo dispara una alarma de caída de enlace en el Sector A. V
 * **Work note en ServiceNow:** "09:02 AM - [NOC L1] Apertura de INC-0085421 por pérdida de conectividad en Sector A. Enlaces físicos validados. Iniciando validación de parámetros IP en terminales."
 
 ### ⏱️ 09:05 AM | Fase 2: Diagnóstico de Red Local - Capas 2 y 3 (Rol: NOC L1)
+![Fase](Fase2.jpg)
 
 Se selecciona un equipo testigo para verificar la correcta integración con la LAN.
 
@@ -65,7 +71,7 @@ arp -a
 * **Work note en ServiceNow:** "09:10 AM - [NOC L1] Parámetros IP correctos obtenidos vía DHCP. Comunicación con Gateway local exitosa (Latency: 1ms). Se descarta problema de tarjeta de red o cableado del usuario. La falla es externa al segmento local."
 
 ### ⏱️ 09:15 AM | Fase 3: Aislamiento del Dominio de Falla y Escalamiento (Rol: NOC L1 ➡️ L2)
-
+![Fase](Fase3.jpg)
 Para determinar el alcance de la interrupción, se ejecutan pruebas hacia la red WAN e Internet.
 
 * **Comandos Ejecutados:**
@@ -81,6 +87,7 @@ tracert 8.8.8.8
 * **Work note en ServiceNow:** "09:20 AM - [NOC L1] Tráfico bloqueado en el salto 10.0.0.1 (SW-CORE). Se adjuntan trazas de diagnóstico. Escalamiento formal ejecutado hacia NOC L2. Shift Lead alertado."
 
 ### ⏱️ 09:25 AM | Fase 4: Diagnóstico de Infraestructura Activa (Rol: NOC L2)
+![Fase](Fase4.jpg)
 
 El ingeniero L2 toma posesión del incidente y accede mediante acceso seguro (SSH) al nodo central de conmutación.
 
@@ -96,8 +103,9 @@ show logging | include LINK
 * **Work note en ServiceNow:** "09:35 AM - [NOC L2] Acceso SSH al nodo SW-CORE-01 exitoso. Se identifica la interfaz Gi0/1 en estado err-disable por saturación de errores físicos en el enlace de subida del ISP."
 
 ### ⏱️ 09:45 AM | Fase 5: Mitigación, Resolución y RCA (Rol: NOC L2)
+![Fase](Fase5.jpg)
 
-Se procede con la recuperación del servicio aplicando el procedimiento de reactivación de interfaz y validación de protocolos de enrutamiento.
+### Se procede con la recuperación del servicio aplicando el procedimiento de reactivación de interfaz y validación de protocolos de enrutamiento.
 
 * **Acciones de Mitigación (CLI):**
 
@@ -109,13 +117,16 @@ no shutdown
 end
 ```
 
+
+
 * **Validación de Convergencia:** Se verifica que la adyacencia del protocolo de enrutamiento dinámico (OSPF) levante y que las rutas vuelvan a poblar la tabla con `show ip route`. Se comprueba la navegación de los usuarios de prueba.
 * **Cierre del Ticket en ServiceNow:**
   * **Código de Cierre:** Resolved - Network Configuration / Port Reset
   * **Análisis de Causa Raíz (RCA):** "El puerto GigabitEthernet0/1 del Switch Core entró en estado err-disable debido a una alta tasa de errores de trama generados por fluctuaciones eléctricas temporales en el conversor de medios del proveedor de internet (ISP). La intervención manual de L2 mediante ciclo de apagado administrativo (shutdown/no shutdown) restableció la capa física y la convergencia OSPF."
   * **Acción Preventiva:** Se solicitó al área de operaciones de campo coordinar una revisión de parámetros físicos con el proveedor de enlace dedicado.
 * **Work note final en ServiceNow:** "10:00 AM - [NOC L2] Servicio totalmente restablecido. Pruebas de conectividad punta a punta exitosas. Se notifica al usuario principal y se cierra el incidente dentro del SLA establecido."
-
+* 
+![Fase](Fase6.jpg)
 ---
 
 ## 📊5. Métricas de Operación y KPIs del Incidente
