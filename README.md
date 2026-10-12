@@ -58,9 +58,9 @@ Análisis de Resultados: El host obtiene una dirección IP válida por DHCP corp
 
 Work note en ServiceNow:
 
-"09:10 AM - [NOC L1] Parámetros IP correctos obtenidos vía DHCP. Comunicación con Gateway local exitosa (Latency: 1ms). Se descarta problema de tarjeta de red o cableado del usuario. La falla es externa al segmento local."
+### 09:10 AM - [NOC L1] Parámetros IP correctos obtenidos vía DHCP. Comunicación con Gateway local exitosa (Latency: 1ms). Se descarta problema de tarjeta de red o cableado del usuario. La falla es externa al segmento local."
 
-⏱️ 09:15 AM | Fase 3: Aislamiento del Dominio de Falla y Escalamiento (Rol: NOC L1 ➡️ L2)
+### ⏱️ 09:15 AM | Fase 3: Aislamiento del Dominio de Falla y Escalamiento (Rol: NOC L1 ➡️ L2)
 Para determinar el alcance de la interrupción, se ejecutan pruebas hacia la red WAN e Internet.
 
 * Comandos Ejecutados:
@@ -76,9 +76,9 @@ Procedimiento de Escalamiento: Al superar el alcance operativo del L1, se reasig
 
 Work note en ServiceNow:
 
-"09:20 AM - [NOC L1] Tráfico bloqueado en el salto 10.0.0.1 (SW-CORE). Se adjuntan trazas de diagnóstico. Escalamiento formal ejecutado hacia NOC L2. Shift Lead alertado."
+### 09:20 AM - [NOC L1] Tráfico bloqueado en el salto 10.0.0.1 (SW-CORE). Se adjuntan trazas de diagnóstico. Escalamiento formal ejecutado hacia NOC L2. Shift Lead alertado."
 
-⏱️ 09:25 AM | Fase 4: Diagnóstico de Infraestructura Activa (Rol: NOC L2)
+### ⏱️ 09:25 AM | Fase 4: Diagnóstico de Infraestructura Activa (Rol: NOC L2)
 El ingeniero L2 toma posesión del incidente y accede mediante acceso seguro (SSH) al nodo central de conmutación.
 
 Comandos CLI Ejecutados (Cisco IOS):
@@ -93,9 +93,9 @@ Análisis de CLI y Logs: El comando show ip interface brief revela que la interf
 
 Work note en ServiceNow:
 
-"09:35 AM - [NOC L2] Acceso SSH a SW-CORE-01 exitoso. Se identifica la interfaz Gi0/1 en estado err-disable por saturación de errores físicos en el enlace de subida del ISP."
+### 09:35 AM - [NOC L2] Acceso SSH a SW-CORE-01 exitoso. Se identifica la interfaz Gi0/1 en estado err-disable por saturación de errores físicos en el enlace de subida del ISP."
 
-⏱️ 09:45 AM | Fase 5: Mitigación, Resolución y RCA (Rol: NOC L2)
+### ⏱️ 09:45 AM | Fase 5: Mitigación, Resolución y RCA (Rol: NOC L2)
 Se procede con la recuperación del servicio aplicando el procedimiento de reactivación de interfaz y validación de protocolos de enrutamiento.
 
 Acciones de Mitigación (CLI):
@@ -115,13 +115,13 @@ Código de Cierre: Resolved - Network Configuration / Port Reset
 
 Análisis de Causa Raíz (RCA):
 
-"El puerto GigabitEthernet0/1 del Switch Core entró en estado err-disable debido a una alta tasa de errores de trama generados por fluctuaciones eléctricas temporales en el conversor de medios del proveedor de internet (ISP). La intervención manual de L2 mediante ciclo de apagado administrativo (shutdown/no shutdown) restableció la capa física y la convergencia OSPF."
+### El puerto GigabitEthernet0/1 del Switch Core entró en estado err-disable debido a una alta tasa de errores de trama generados por fluctuaciones eléctricas temporales en el conversor de medios del proveedor de internet (ISP). La intervención manual de L2 mediante ciclo de apagado administrativo (shutdown/no shutdown) restableció la capa física y la convergencia OSPF."
 
 Acción Preventiva: Se solicitó al área de operaciones de campo coordinar una revisión de parámetros físicos con el proveedor de enlace dedicado.
 
 Work note final en ServiceNow:
 
-"10:00 AM - [NOC L2] Servicio totalmente restablecido. Pruebas de conectividad punta a punta exitosas. Se notifica al usuario principal y se cierra el incidente dentro del SLA establecido."
+### 10:00 AM - [NOC L2] Servicio totalmente restablecido. Pruebas de conectividad punta a punta exitosas. Se notifica al usuario principal y se cierra el incidente dentro del SLA establecido."
 
 📊 5. Métricas de Operación y KPIs del Incidente
 MTTA (Mean Time to Acknowledge): 3 minutos.
