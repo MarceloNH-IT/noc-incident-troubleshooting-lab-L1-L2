@@ -169,6 +169,7 @@ Para que cualquiera pueda probarlo y auditarlo, el laboratorio se entrega con un
 * *Ideal para abrirlo en Packet Tracer, levantar el puerto y verificar cómo opera todo el flujo de red.*
 
 ![Capa](CapaProblem.jpg)
+![OSI](Modelo_OSI.jpg)
 
 ---
 
