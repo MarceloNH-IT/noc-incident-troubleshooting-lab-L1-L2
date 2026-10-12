@@ -6,7 +6,7 @@
 
 ---
 ![Topologia](Topologia.jpg)
-
+![Topologia](TopologiaPT.jpg)
 
 
 ## 📄1. Descripción General del Proyecto
