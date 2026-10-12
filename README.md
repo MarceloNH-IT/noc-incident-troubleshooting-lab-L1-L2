@@ -168,6 +168,8 @@ El laboratorio en **[`topologia_noc_lab.pkt`](./topologia_noc_lab.pkt)** cuenta 
 Para que cualquiera pueda probarlo y auditarlo, el laboratorio se entrega con una **falla controlada**: el puerto de salida hacia el router de borde está apagado (`shutdown`). 
 * *Ideal para abrirlo en Packet Tracer, levantar el puerto y verificar cómo opera todo el flujo de red.*
 
+![Capa](CapaProblem.jpg)
+
 ---
 
 ## 👤 Autor
