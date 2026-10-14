@@ -4,6 +4,9 @@
 [![ITSM: ServiceNow](https://img.shields.io/badge/ITSM-ServiceNow-green.svg)](https://www.servicenow.com)
 [![Status: Lab Completed](https://img.shields.io/badge/Status-Completed-success.svg)]()
 
+
+![Profile Views](https://visitor-badge.laobi.icu/badge?page_id=MarceloNH-IT.MarceloNH-IT&style=flat&color=blue)
+
 ---
 ![Topologia](Topologia.jpg)
 ![Topologia](TopologiaPT.jpg)
@@ -187,7 +190,7 @@ Para que cualquiera pueda probarlo y auditarlo, el laboratorio se entrega con un
 ![Streak Stats](https://github-readme-streak-stats.herokuapp.com/?user=MarceloNH-IT&theme=radical)
 
 
-[![Profile Views](https://komarev.com/ghpvc/?username=MarceloNH-IT&color=blue&style=flat)](https://github.com/MarceloNH-IT)
+![Profile Views](https://visitor-badge.laobi.icu/badge?page_id=MarceloNH-IT.MarceloNH-IT&style=flat&color=blue)
 
 * **💼 LinkedIn**: [Horacio Marcelo Nuñez](https://linkedin.com) 
 * **📬 Correo Electrónico**: [marcelonh86@gmail.com](marcelonh86@gmail.com)
